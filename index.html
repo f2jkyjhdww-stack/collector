@@ -3,12 +3,27 @@
 <body>
 <h2>token collector</h2>
 
+<input id="input" placeholder="输入token">
+<button onclick="submitData()">提交</button>
+
+<p id="msg"></p>
+
 <script>
-fetch("/api")
-  .then(res => res.text())
-  .then(data => console.log(data));
+async function submitData() {
+  const value = document.getElementById("input").value;
+
+  const res = await fetch("/api", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ token: value })
+  });
+
+  const text = await res.text();
+  document.getElementById("msg").innerText = text;
+}
 </script>
 
-<p>collector running...</p>
 </body>
 </html>
