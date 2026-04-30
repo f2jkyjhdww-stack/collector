@@ -1,0 +1,2 @@
+# collector
+auto collect token
