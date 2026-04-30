@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>token collector</h2>
+
+<script>
+fetch("/api")
+  .then(res => res.text())
+  .then(data => console.log(data));
+</script>
+
+<p>collector running...</p>
+</body>
+</html>
