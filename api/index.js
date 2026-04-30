@@ -1,14 +1,16 @@
 export default async function handler(req, res) {
-  if (req.method === 'POST') {
-    const data = req.body;
-
-    console.log("收到数据：", data);
-
-    return res.status(200).json({
-      code: 0,
-      msg: "success"
-    });
+  if (req.method !== "POST") {
+    return res.status(200).send("collector running");
   }
 
-  return res.status(200).send("collector running");
+  const { token } = req.body;
+
+  // 这里先简单打印（你可以在Vercel日志看到）
+  console.log("收到token:", token);
+
+  return res.json({
+    code: 0,
+    msg: "success",
+    data: token
+  });
 }
